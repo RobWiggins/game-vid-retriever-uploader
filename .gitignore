@@ -1,0 +1,99 @@
+# Files created by the Django app are stored here. Django calls these files
+# 'user-uploaded' files.
+django_media_root/
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+.installed.cfg
+
+# PyInstaller (TODO: don't think this is/will be used right now)
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+coverage_html_report/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+/cover
+coverage/
+junit.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# PyBuilder
+target/
+
+# pyenv
+.python-version
+
+# celery beat schedule file (TODO: Not using celery as of yet) 
+celerybeat-schedule
+
+# Environments
+.env
+.env.*
+.venv
+env/
+pip-venv/
+dev-venv/
+venv/
+ENV/
+apivenv/
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# intellij
+.idea
+
+.DS_Store
+
+# Vim swap and backup files
+*.swp
+*~
+
+# VS Code
+.vscode/
+
+#Django compiled static files
+/shared/shared/staticfiles
+
+#test related files
+/test_results
+
+db_dumps
