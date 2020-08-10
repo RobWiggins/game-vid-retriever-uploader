@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+# TODO: make these paths/packages same names
 urlpatterns = [
-    path('highlight-retriever/', include('highlights_retriever.urls')),
+    path('highlights/', include('retriever.urls')),
     path('admin/', admin.site.urls),
 ]
