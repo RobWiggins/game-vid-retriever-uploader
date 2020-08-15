@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
+
+# Load sensitive environment-specific settings from .env file
+# Does not override existing System variables by default.
+# To override, use load_dotenv(override=True)
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -19,10 +25,12 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
+
+# TODO: SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(&sd-i@84%xi2t-cl9hkg0_3_0v3r3+pmwp5^*890hm&d+s%c)'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# TODO: SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
