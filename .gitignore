@@ -97,3 +97,6 @@ apivenv/
 /test_results
 
 db_dumps
+
+# file downloads
+highlights/downloads

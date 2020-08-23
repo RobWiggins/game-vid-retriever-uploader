@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from .downloader import Downloader
 import requests
 import sys
 import os
@@ -7,7 +8,8 @@ import json
 import datetime
 from dotenv import load_dotenv
 # TODO: Not resolving or finding this import - broken
-# import strict_rfc3339
+import strict_rfc3339
+
 
 class TwitchRetriever:
     """
@@ -83,17 +85,32 @@ class TwitchRetriever:
         headers['Client-ID'] = CLIENT_ID
         # game_id = self.get_game_id(game_name, headers=headers)
         params['game_id'] = game_id
-        params['first'] = 50 # MAX 100
+        params['first'] = 10  # MAX 100
+
         # TODO: The below time conversion is broken - figure out the right way to do it
-        # params['started_at'] = strict_rfc3339.timestamp_to_rfc3339_utcoffset((datetime.datetime.now() - datetime.timedelta(9)))
+        # Get 9 days previous date
+        # prev = datetime.datetime.today() - datetime.timedelta(days=9)
+        # print('prev', prev)
+        # prevRfc = strict_rfc3339.timestamp_to_rfc3339_utcoffset()
+        # print(prevRfc)
+        # params['started_at'] = strict_rfc3339.timestamp_to_rfc3339_utcoffset(prev)
+        # print('after strict rfc3339')
+
         print(params)
         # try:
         clips_res = requests.get(
             self.CLIPS_URL, params=params, headers=headers)
         clips_res_json = clips_res.json()
         print('THE GET_CLIPS JSON RES' + (json.dumps(clips_res_json)))
+        downloader = Downloader()
+        num_clips = 0
+        downloader.clear_dir_if_exists('./downloads')
         for clip in clips_res_json['data']:
             print(clip['url'])
+            downloader.download_video_from_url(
+                clip['url'], f'./downloads/clip{str(num_clips)}')
+            num_clips += 1
+
         return clips_res_json
         # except:
         # print('Raised an exception')
